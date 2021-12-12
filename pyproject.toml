@@ -5,7 +5,7 @@ description = ""
 authors = ["Fredrik Fornwall <fredrik@fornwall.net>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 advent-of-code = "*"
 
 [tool.poetry.dev-dependencies]
