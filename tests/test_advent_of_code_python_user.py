@@ -1,7 +1,7 @@
 import pytest
 from advent_of_code import solve
 
-def testa(year: int, day: int, part: int, input: str) -> str:
+def just_for_type_checking(year: int, day: int, part: int, input: str) -> str:
     "mypy detects type errors if changing the above"
     return solve(year, day, part, input)
 
