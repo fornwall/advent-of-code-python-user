@@ -23,3 +23,9 @@ jobs:
     - run: poetry --version
     - run: poetry install
     - run: poetry run pytest
+
+  test-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./run-docker-test.sh
