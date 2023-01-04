@@ -18,6 +18,8 @@ with open(sessions_file) as f:
 # Prevent webbrowser.open, which aocd calls, from opening a browser:
 os.environ["BROWSER"] = "true"
 
+generated_file = open("tests/test_generated.py", "w")
+
 if "AOC_YEAR" in os.environ:
     years_string = os.environ["AOC_YEAR"]
     if "-" in years_string:
@@ -26,7 +28,7 @@ if "AOC_YEAR" in os.environ:
     else:
         years = [int(years_string)]
 else:
-    years = [2015, 2016, 2017, 2018, 2019, 2020, 2021]
+    years = range(2015, 2023)
 
 if "AOC_DAY" in os.environ:
     days_string = os.environ["AOC_DAY"]
@@ -52,7 +54,7 @@ print("""import pytest
 from advent_of_code import solve
 
 def test_advent_of_code():
-""")
+""", file=generated_file)
 
 def escape_string(s):
     return s.replace('\\', '\\\\').replace("\n", "\\n").replace("'", "\\'")
@@ -85,4 +87,4 @@ for year in years:
                 answer = puzzle.answer_a if part == 1 else puzzle.answer_b
                 escaped_answer = escape_string(answer)
                 escaped_input = escape_string(input_data)
-                print(f"    assert solve({year}, {day}, {part}, '{escaped_input}') == '{escaped_answer}'")
+                print(f"    assert solve({year}, {day}, {part}, '{escaped_input}') == '{escaped_answer}'", file=generated_file)
