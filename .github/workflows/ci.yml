@@ -17,7 +17,7 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    - uses: Gr1N/setup-poetry@v7
+    - uses: Gr1N/setup-poetry@v8
     - if: matrix.python-version == '3.11' && matrix.os == 'macos-latest'
       run: mkdir ~/.local/bin && ln -s ~/Library/Python/3.11/bin/poetry ~/.local/bin/poetry
     - run: poetry --version
@@ -27,5 +27,5 @@ jobs:
   test-docker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - run: ./run-docker-test.sh
