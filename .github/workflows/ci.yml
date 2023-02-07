@@ -18,8 +18,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - uses: Gr1N/setup-poetry@v8
-    - if: matrix.python-version == '3.11' && matrix.os == 'macos-latest'
-      run: mkdir ~/.local/bin && ln -s ~/Library/Python/3.11/bin/poetry ~/.local/bin/poetry
     - run: poetry --version
     - run: poetry install
     - run: poetry run pytest
