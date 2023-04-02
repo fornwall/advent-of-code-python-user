@@ -50,21 +50,26 @@ if "AOC_ACCOUNT" in os.environ:
 else:
     account = "*"
 
-print("""import pytest
+print(
+    """import pytest
 from advent_of_code import solve
 
 def test_advent_of_code():
-""", file=generated_file)
+""",
+    file=generated_file,
+)
+
 
 def escape_string(s):
-    return s.replace('\\', '\\\\').replace("\n", "\\n").replace("'", "\\'")
+    return s.replace("\\", "\\\\").replace("\n", "\\n").replace("'", "\\'")
+
 
 for year in years:
     for day in days:
         cached_inputs = {}
         for session in SESSIONS:
             session_cookie = session["cookie"]
-            if session_cookie == 'TODO':
+            if session_cookie == "TODO":
                 continue
             session_description = session["description"]
             if not (account == "*" or account == session_description):
@@ -77,7 +82,10 @@ for year in years:
             input_data = puzzle.input_data
 
             if input_data in cached_inputs:
-                print("Skipping - input already seen for " + cached_inputs[input_data], file=sys.stderr)
+                print(
+                    "Skipping - input already seen for " + cached_inputs[input_data],
+                    file=sys.stderr,
+                )
                 continue
             cached_inputs[input_data] = session_description
 
@@ -87,4 +95,7 @@ for year in years:
                 answer = puzzle.answer_a if part == 1 else puzzle.answer_b
                 escaped_answer = escape_string(answer)
                 escaped_input = escape_string(input_data)
-                print(f"    assert solve({year}, {day}, {part}, '{escaped_input}') == '{escaped_answer}'", file=generated_file)
+                print(
+                    f"    assert solve({year}, {day}, {part}, '{escaped_input}') == '{escaped_answer}'",
+                    file=generated_file,
+                )
