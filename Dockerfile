@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM ubuntu:23.10
 RUN apt-get update && \
     apt-get install --no-install-recommends --yes python3 curl ca-certificates python3-distutils
 RUN curl -sSL https://install.python-poetry.org | python3 -
