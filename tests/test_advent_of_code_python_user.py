@@ -20,4 +20,4 @@ def test_version():
 
     with pytest.raises(ValueError) as excinfo:
         solve(2019, 1, 1, "hello")
-    assert "Line 1: Invalid digit found in string" == str(excinfo.value)
+    assert "Line 1: invalid digit found in string" == str(excinfo.value)
